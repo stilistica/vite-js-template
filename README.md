@@ -22,24 +22,6 @@
 
 ---
 
-## 🗂 Структура проєкту
-
-vite-js-template/
-├─ public/                # Статичні файли, доступні як /...
-│  └─ images/             # Статичні зображення (favicon, логотипи)
-├─ src/
-│  ├─ assets/
-│  │  └─ images/          # Зображення для компонентів, обробляються Vite
-│  ├─ components/         # HTML-компоненти (partials для Handlebars/Hulak)
-│  ├─ js/
-│  │  ├─ main.js          # Точка входу JS
-│  │  └─ modules/         # Додаткові JS-модулі
-│  └─ scss/               # Стилі SCSS
-├─ pages/                  # Додаткові HTML-сторінки
-├─ vite.config.ts          # Конфігурація Vite
-└─ package.json
-
-
 ## 🧠 Використання
 
 ### Встановлення залежностей
