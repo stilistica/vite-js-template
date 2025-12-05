@@ -3,7 +3,6 @@ import handlebars from "vite-plugin-handlebars";
 import hulakTools from "vite-plugin-hulak-tools";
 import path from "path";
 import Inspect from "vite-plugin-inspect";
-import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { defineConfig } from "vite";
 import fullReload from "vite-plugin-full-reload";
 
@@ -31,28 +30,6 @@ export default defineConfig({
       handlebarsOptions: {
         partialDirectory: resolve(__dirname, "src/components"), // твої components
       },
-    }),
-    ViteImageOptimizer({
-      png: {
-        quality: 75,
-      },
-      jpeg: {
-        quality: 75,
-      },
-      jpg: {
-        quality: 75,
-      },
-      tiff: {
-        quality: 75,
-      },
-      webp: {
-        lossless: true,
-      },
-      avif: {
-        lossless: true,
-      },
-      cache: false,
-      cacheLocation: undefined,
     }),
     fullReload(["src/components/**/*.html"]),
   ],

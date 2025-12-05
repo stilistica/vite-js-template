@@ -16,7 +16,6 @@
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-handlebars": "^2.0.0",
     "vite-plugin-hulak-tools": "^3.0.0",
-    "vite-plugin-image-optimizer": "^2.0.3",
     "vite-plugin-inspect": "^11.3.3"
   },
   "dependencies": {
