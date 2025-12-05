@@ -1,0 +1,22 @@
+{
+  "name": "vite-js-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.94.2",
+    "sharp": "^0.34.5",
+    "svgo": "^4.0.0",
+    "vite": "^7.2.4",
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "vite-plugin-inspect": "^11.3.3"
+  },
+  "dependencies": {
+    "normalize.css": "6.3.5"
+  }
+}
