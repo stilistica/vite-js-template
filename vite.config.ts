@@ -8,8 +8,10 @@ import { defineConfig } from "vite";
 import fullReload from "vite-plugin-full-reload";
 
 const pages = ["index.html", "pages/second.html"];
+const repoBase = "/"; //приклад для Гіт Хаб "/ClubTravel/"
 
 export default defineConfig({
+  base: repoBase,
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -20,6 +22,9 @@ export default defineConfig({
     Inspect(),
     handlebars({
       partialDirectory: resolve(__dirname, "src/components"),
+      helpers: {
+        link: (path) => repoBase + path,
+      },
     }),
     hulakTools({
       enableHandlebars: true,
@@ -49,9 +54,7 @@ export default defineConfig({
       cache: false,
       cacheLocation: undefined,
     }),
-    fullReload([
-      "src/components/**/*.html", 
-    ]),
+    fullReload(["src/components/**/*.html"]),
   ],
 
   build: {

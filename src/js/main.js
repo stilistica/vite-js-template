@@ -7,3 +7,4 @@ import '@/scss/style.scss'
 // const headerEl = Header({ name: "Dima" })
 // document.body.appendChild(headerEl)
 
+сonsole.log(Hello)
