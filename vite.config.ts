@@ -42,7 +42,7 @@ export default defineConfig(({ command }) => {
     ],
 
     build: {
-      outDir: "../docs",
+      outDir: "../dist",
       emptyOutDir: true,
       rollupOptions: {
         input: {
