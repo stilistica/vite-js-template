@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vite-js-template</title>
+  </head>
+  <body>
+    <load src="./components/header.html" />
+    {{> header}}
+    <img src="/images/image.jpg" preset="presetWebp" />
+
+    <svg>
+      <use href="/images/sprite.svg#icon-point"></use>
+    </svg>
+    <a href="{{link 'pages/second.html'}}">Second page</a>
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
