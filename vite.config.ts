@@ -2,18 +2,22 @@ import { defineConfig } from "vite";
 import path from "path";
 import { resolve } from "path";
 import { glob } from "glob";
+// @ts-ignore
 import handlebars from "vite-plugin-handlebars";
-import hulakTools from "vite-plugin-hulak-tools";
+import { hulakPlugins } from "vite-plugin-hulak-tools";
 import injectHTML from "vite-plugin-html-inject";
 import FullReload from "vite-plugin-full-reload";
+import { createHtmlPlugin } from "vite-plugin-html";
 import Inspect from "vite-plugin-inspect";
 
 const repoBase = "/vite-js-template/"; //приклад для Гіт Хаб "/ClubTravel/"
+const partialDir = [resolve(__dirname, "src/components")];
 
 export default defineConfig(({ command }) => {
   return {
     base: repoBase,
     root: "src",
+    appType: "mpa",
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
@@ -26,16 +30,26 @@ export default defineConfig(({ command }) => {
     plugins: [
       Inspect(),
       handlebars({
-        partialDirectory: resolve(__dirname, "src/components"),
+        partialDirectory: partialDir,
         helpers: {
           link: (p) => repoBase + p,
         },
       }),
-      hulakTools({
+      hulakPlugins({
         enableHandlebars: true,
         handlebarsOptions: {
           partialDirectory: resolve(__dirname, "src/components"),
         },
+      }),
+      createHtmlPlugin({
+        minify: true,
+        // @ts-ignore
+        collapseWhitespace: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        minifyCSS: true,
+        minifyJS: true,
       }),
       injectHTML(),
       FullReload(["./src/**/**.html"]),
@@ -87,16 +101,10 @@ export default defineConfig(({ command }) => {
     },
 
     // envPrefix: "APP_",
-    // server: {
-    //   open: true,
-    //   port: 5173,
-    //   strictPort: true,
-    //   fs: {
-    //     strict: false, // дозволяє слідкувати за файлами поза коренем
-    //   },
-    //   watch: {
-    //     usePolling: true,
-    //   },
-    // },
+    server: {
+      watch: {
+        usePolling: true,
+      },
+    },
   };
 });
