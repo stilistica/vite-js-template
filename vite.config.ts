@@ -4,16 +4,15 @@ import { resolve } from "path";
 import { glob } from "glob";
 // @ts-ignore
 import handlebars from "vite-plugin-handlebars";
-import { hulakPlugins } from "vite-plugin-hulak-tools";
 import injectHTML from "vite-plugin-html-inject";
 import FullReload from "vite-plugin-full-reload";
 import { createHtmlPlugin } from "vite-plugin-html";
 import Inspect from "vite-plugin-inspect";
 
-const repoBase = "/vite-js-template/"; //приклад для Гіт Хаб "/ClubTravel/"
 const partialDir = [resolve(__dirname, "src/components")];
 
 export default defineConfig(({ command }) => {
+  const repoBase = command === "serve" ? "/" : "/vite-js-template/"; //приклад для Гіт Хаб "/ClubTravel/"
   return {
     base: repoBase,
     root: "src",
@@ -32,13 +31,7 @@ export default defineConfig(({ command }) => {
       handlebars({
         partialDirectory: partialDir,
         helpers: {
-          link: (p) => repoBase + p,
-        },
-      }),
-      hulakPlugins({
-        enableHandlebars: true,
-        handlebarsOptions: {
-          partialDirectory: resolve(__dirname, "src/components"),
+          link: (p) => `${repoBase}${p}`.replace(/\/{2,}/g, "/"),
         },
       }),
       createHtmlPlugin({
@@ -68,7 +61,7 @@ export default defineConfig(({ command }) => {
               .map((file) => [
                 file.replace("./src/pages/", "").replace(".html", ""),
                 resolve(__dirname, file),
-              ])
+              ]),
           ),
         },
         output: {
